@@ -84,10 +84,10 @@ public class Videojuegos {
     
     protected static void buscarJuego(Scanner sc) {
         sc.nextLine();
-        String serial = estilosConsola.solicitarTexto(sc, "\nIntroduce el serial del juego:" );
+        String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del juego:" );
         boolean encontrado = false;
         for (String[] juego : juegos) {
-            if (juego[0].equals(serial)) {
+            if (juego[1].equals(nombre)) {
                 System.out.println("\n" + estilosConsola.ANSI_GREEN + "Juego encontrado:" + estilosConsola.ANSI_WHITE);
                 System.out.println(String.join(", ", juego));
                 encontrado = true;
@@ -99,14 +99,12 @@ public class Videojuegos {
     }
     
     protected static void cambiarEstadoJuego(Scanner sc) {
-        System.out.print("\nIntroduce el Serial del juego a modificar: ");
         sc.nextLine();
-        String serial = sc.nextLine();
+        String serial = estilosConsola.solicitarTexto(sc, "\\nIntroduce el Serial del juego a modificar: " );
         boolean encontrado = false;
         for (String[] juego : juegos) {
             if (juego[0].equals(serial)) {
-            	System.out.print("Ingrese el nuevo estado del juego: ");
-                String nuevoEstado = sc.nextLine();
+                String nuevoEstado = estilosConsola.solicitarTexto(sc, "Ingrese el nuevo estado del juego: " );
                 juego[3] = nuevoEstado; 
                 guardarJuegosEnArchivo();
                 System.out.println("\nEl estado del juego se ha modificado correctamente.");
@@ -120,8 +118,8 @@ public class Videojuegos {
     
     protected static void listaJuegos() {
     	System.out.println("\nListado de juegos registrados: \n");
-    	System.out.println(estilosConsola.ANSI_PURPLE + "Serial        Juego        Ptf     Estado " + estilosConsola.ANSI_WHITE);
-        
+    	System.out.println(estilosConsola.ANSI_PURPLE + "Serial        Juego         Ptf     Estado " + estilosConsola.ANSI_WHITE);
+
         // Calcular la longitud máxima de cada campo
         int[] maxLengths = new int[4];
         for (String[] juego : juegos) {
