@@ -6,8 +6,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Videojuegos {
-
-	private static ArrayList<String[]> juegosDb = new ArrayList<>();
+	
 	private static ArrayList<String[]> juegos = new ArrayList<>();
 	File archivo;
 	
@@ -84,9 +83,8 @@ public class Videojuegos {
     }
     
     protected static void buscarJuego(Scanner sc) {
-        System.out.print("\nIntroduce el serial del juego: ");
         sc.nextLine();
-        String serial = sc.nextLine();
+        String serial = estilosConsola.solicitarTexto(sc, "\nIntroduce el serial del juego:" );
         boolean encontrado = false;
         for (String[] juego : juegos) {
             if (juego[0].equals(serial)) {
@@ -121,9 +119,26 @@ public class Videojuegos {
     }
     
     protected static void listaJuegos() {
-        System.out.print("\nListado de juegos registrados: \n");
+    	System.out.println("\nListado de juegos registrados: \n");
+    	System.out.println(estilosConsola.ANSI_PURPLE + "Serial        Juego        Ptf     Estado " + estilosConsola.ANSI_WHITE);
+        
+        // Calcular la longitud máxima de cada campo
+        int[] maxLengths = new int[4];
         for (String[] juego : juegos) {
-                System.out.println(String.join(", %s", juego));
+            for (int i = 0; i < juego.length; i++) {
+                maxLengths[i] = Math.max(maxLengths[i], juego[i].length());
+            }
+        }
+        // Imprimir la lista de juegos con formato de columnas
+        for (String[] juego : juegos) {
+            for (int i = 0; i < juego.length; i++) {
+                System.out.print(juego[i]);
+                // Añadir espacios para alinear los datos
+                for (int j = 0; j < maxLengths[i] - juego[i].length() + 4; j++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
         } 
     }
 }
