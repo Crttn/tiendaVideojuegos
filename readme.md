@@ -1,7 +1,5 @@
 # TIENDA DE VIDEOJUEGOS
 
-______________________________________  ____________
-
 Instrucciones para el uso del programa:
 
 **Menú Principal**
