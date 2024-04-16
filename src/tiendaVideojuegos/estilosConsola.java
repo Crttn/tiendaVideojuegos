@@ -25,14 +25,14 @@ public class estilosConsola {
         System.out.println("2." + ANSI_CYAN + "Cambiar el estado de juegos" + ANSI_WHITE);
         System.out.println("3." + ANSI_CYAN + "Buscar juegos" + ANSI_WHITE);
         System.out.println("4." + ANSI_CYAN + "Ver lista de juegos" + ANSI_WHITE);
-        System.out.println("5.Volver");
+        System.out.println("5. " + ANSI_RED + "Volver" + ANSI_WHITE);
     }
 	
 	protected void menuUsuarios() {
-		System.out.println("\n1. Agregar usuarios");
-        System.out.println("2. Eliminar usuarios");
-        System.out.println("3. Modificar usuarios");
-        System.out.println("4. Volver");
+		System.out.println("\n1. " + ANSI_CYAN + "Agregar usuarios" + ANSI_WHITE);
+        System.out.println("2. " + ANSI_CYAN + "Eliminar usuarios" + ANSI_WHITE);
+        System.out.println("3. " + ANSI_CYAN + "Modificar usuarios" + ANSI_WHITE);
+        System.out.println("4." + ANSI_RED + " Volver" + ANSI_WHITE);
 	}
 	
 	protected void menuCompras() {
