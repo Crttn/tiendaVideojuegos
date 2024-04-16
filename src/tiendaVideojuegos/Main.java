@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Main {
 	
 	public static void main(String[] args) {
-		Archivos archivos = new Archivos();
 		estilosConsola estilos = new estilosConsola();
 
 		Scanner sc = new Scanner(System.in);
@@ -18,6 +17,8 @@ public class Main {
 		
 		do {
 			Videojuegos.cargarJuegosEnArchivo();
+			Usuarios.cargarUsuariosEnArchivo();
+			Compras.cargarComprasEnArchivo();
 			estilos.separador();
 			estilos.menuPrincipalCartel();
 			estilos.menuPrincipal();
@@ -29,7 +30,6 @@ public class Main {
             		estilos.menuJuegosCartelera();
             		estilos.menuJuegos();
             		eleccion = estilos.solicitarOpcion(sc);
-            		
             		
             		switch(eleccion) {
             		case 1:
@@ -60,16 +60,22 @@ public class Main {
             		
             		switch(eleccion) {
             		case 1:
+            			Usuarios.agregarUsuario(sc);
             			break;
             		case 2:
+            			Usuarios.buscarUsuario(sc);
             			break;
             		case 3:
+            			Usuarios.listaUsuarios();
             			break;
             		case 4:
+            			Usuarios.eliminarUsuario(sc);
+            			break;
+            		case 5:
             			System.out.println("Volviendo al menu principal");
                         break;
                     default:
-                        System.out.println("Opción no válida. Por favor, ingrese un número válido.");
+                        System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
             		}
             		break;
             		
@@ -81,12 +87,16 @@ public class Main {
             		
             		switch(eleccion) {
             		case 1:
+            			Compras.realizarCompra(sc);
             			break;
             		case 2:
+            			Compras.listaCompras();
+            			break;
+            		case 3:
             			System.out.println("Volviendo al menu principal");
                         break;
                     default:
-                        System.out.println("Opción no válida. Por favor, ingrese un número válido.");
+                        System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
             		}
             		break;
             		
@@ -95,7 +105,7 @@ public class Main {
             		System.out.println("\nSaliendo del programa.");
                     break;
                 default:
-                    System.out.println("Opción no válida. Por favor, ingrese un número válido.");
+                    System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
             }
             
 		} while (opcion != 4);

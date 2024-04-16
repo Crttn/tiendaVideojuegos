@@ -34,13 +34,13 @@ public class Videojuegos {
 			}
 			br.close();
 		} catch (IOException e) {
-			System.out.println("Error al cargar los usuarios.");
+			System.out.println("Error al cargar los juegos.");
 		}
 	}
 	
 	protected static void agregarJuego(Scanner sc) {
     	sc.nextLine();
-        String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del Juego: ");
+        String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del juego: ");
         String consola = estilosConsola.solicitarTexto(sc, "Introduce la consola: ");
         String estado = estilosConsola.solicitarTexto(sc, "Introduce el estado del juego: ");
         String serial = assignSerial();
@@ -59,7 +59,7 @@ public class Videojuegos {
             }
             bw.close();
         } catch (IOException e) {
-            System.out.println("Error al guardar los usuarios.");
+            System.out.println("Error al guardar los juegos.");
         }
     }
 	
@@ -68,8 +68,6 @@ public class Videojuegos {
 	    System.out.println("\nJuegos guardados correctamente en el archivo.");
 	}
 
-    
-	
     private static String assignSerial() {
         Random rd = new Random();
         StringBuilder serial = new StringBuilder();
@@ -138,5 +136,20 @@ public class Videojuegos {
             }
             System.out.println();
         } 
+    }
+    
+    protected static String obtenerJuego(Scanner sc) {
+        String serial = estilosConsola.solicitarTexto(sc, "\nIntroduce el serial del juego:" );
+        boolean encontrado = false;
+        for (String[] juego : juegos) {
+            if (juego[0].equals(serial)) {
+                System.out.println("\n" + estilosConsola.ANSI_GREEN + "Juego encontrado:" + estilosConsola.ANSI_WHITE);
+                encontrado = true;
+                return serial;
+            }
+        }
+        if (!encontrado)
+            System.out.println(estilosConsola.ANSI_RED + "\nJuego no encontrado." + estilosConsola.ANSI_WHITE);
+        return null;
     }
 }

@@ -30,14 +30,16 @@ public class estilosConsola {
 	
 	protected void menuUsuarios() {
 		System.out.println("\n1. " + ANSI_CYAN + "Agregar usuarios" + ANSI_WHITE);
-        System.out.println("2. " + ANSI_CYAN + "Eliminar usuarios" + ANSI_WHITE);
-        System.out.println("3. " + ANSI_CYAN + "Modificar usuarios" + ANSI_WHITE);
-        System.out.println("4." + ANSI_RED + " Volver" + ANSI_WHITE);
+        System.out.println("2. " + ANSI_CYAN + "Buscar usuarios" + ANSI_WHITE);
+        System.out.println("3. " + ANSI_CYAN + "Lista de usuarios" + ANSI_WHITE);
+        System.out.println("4. " + ANSI_CYAN + "Eliminar usuarios" + ANSI_WHITE);
+        System.out.println("5." + ANSI_RED + " Volver" + ANSI_WHITE);
 	}
 	
 	protected void menuCompras() {
-		System.out.println("\n1. Generar compra");
-		System.out.println("2. Volver");
+		System.out.println("\n1." + ANSI_CYAN + "Generar compra" + ANSI_WHITE);
+		System.out.println("2." + ANSI_CYAN + "Generar compra" + ANSI_WHITE);
+		System.out.println("3." + ANSI_RED + "Volver" + ANSI_WHITE);
 	}
 	
 	protected int solicitarOpcion(Scanner sc) {
