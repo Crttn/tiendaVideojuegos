@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class Usuarios {
 
 	private static ArrayList<String[]> usuarios = new ArrayList<>();
-	File archivo;
 
-	protected void crearArchivoUsuarios() {
+	public void crearArchivoUsuarios() {
+		File archivo;
 		archivo = new File("usuarios.txt");
 		try {
 			if (archivo.createNewFile()) {
@@ -27,7 +27,7 @@ public class Usuarios {
 		}
 	}
 
-	protected static void cargarUsuariosEnArchivo() {
+	public static void cargarUsuariosEnArchivo() {
 		usuarios.clear();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("usuarios.txt"));
@@ -42,7 +42,7 @@ public class Usuarios {
 		}
 	}
 
-	protected static void guardarUsuariosEnArchivo() {
+	public static void guardarUsuariosEnArchivo() {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("usuarios.txt"));
 			for (String[] usuario : usuarios) {
@@ -55,7 +55,7 @@ public class Usuarios {
 		}
 	}
 
-	protected static void agregarUsuario(Scanner sc) {
+	public static void agregarUsuario(Scanner sc) {
 		sc.nextLine();
 		String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del usuario: ");
 		String apellidos = estilosConsola.solicitarTexto(sc, "Introduce los apellidos: ");
@@ -68,7 +68,7 @@ public class Usuarios {
 		System.out.println("\nUsuario añadido correctamente.\n");
 	}
 
-	protected static void buscarUsuario(Scanner sc) {
+	public static void buscarUsuario(Scanner sc) {
 		sc.nextLine();
 		String telefono = estilosConsola.solicitarTexto(sc, "\nIntroduce el teléfono del Usuario:");
 		boolean encontrado = false;
@@ -85,7 +85,7 @@ public class Usuarios {
 			System.out.println(estilosConsola.ANSI_RED + "\nUsuario no encontrado." + estilosConsola.ANSI_WHITE);
 	}
 
-	protected static void listaUsuarios() {
+	public static void listaUsuarios() {
 		System.out.println("\nListado de usuarios registrados: \n");
 		System.out.println(estilosConsola.ANSI_PURPLE + "Teléfono       Nombre	 Apellidos	Dni	       Correo "
 				+ estilosConsola.ANSI_WHITE);
@@ -110,7 +110,7 @@ public class Usuarios {
 		}
 	}
 
-	protected static void eliminarUsuario(Scanner sc) {
+	public static void eliminarUsuario(Scanner sc) {
 		sc.nextLine();
 		String dni = estilosConsola.solicitarTexto(sc, "Ingrese el DNI del usuario que desea eliminar: ");
 		boolean encontrado = false;
@@ -127,7 +127,7 @@ public class Usuarios {
 			System.out.println("\nUsuario no encontrado.");
 	}
 
-	protected static String obtenerUsuario(Scanner sc) {
+	public static String obtenerUsuario(Scanner sc) {
 		sc.nextLine();
 		String dni = estilosConsola.solicitarTexto(sc, "\nIntroduce el dni del Usuario:");
 		boolean encontrado = false;

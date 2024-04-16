@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class Compras {
 
 	private static ArrayList<String[]> compras = new ArrayList<>();
-	File archivo;
 
-	protected void crearArchivoCompras() {
+	public void crearArchivoCompras() {
+		File archivo;
 		archivo = new File("compras.txt");
 		try {
 			if (archivo.createNewFile()) {
@@ -27,7 +27,7 @@ public class Compras {
 		}
 	}
 
-	protected static void cargarComprasEnArchivo() {
+	public static void cargarComprasEnArchivo() {
 		compras.clear();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("compras.txt"));
@@ -42,7 +42,7 @@ public class Compras {
 		}
 	}
 
-	protected static void guardarCompraEnArchivo() {
+	public static void guardarCompraEnArchivo() {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("compras.txt"));
 			for (String[] compra : compras) {
@@ -55,12 +55,12 @@ public class Compras {
 		}
 	}
 
-	protected static String generarIdCompra() {
+	public static String generarIdCompra() {
 		int id = compras.size() + 1;
 		return Integer.toString(id);
 	}
 
-	protected static void realizarCompra(Scanner sc) {
+	public static void realizarCompra(Scanner sc) {
 		String usuario = Usuarios.obtenerUsuario(sc);
 		if (usuario == null) {
 			System.out.println("\nNo se puede realizar la compra porque el usuario no fue encontrado.");
@@ -79,7 +79,7 @@ public class Compras {
 		guardarCompraEnArchivo();
 	}
 
-	protected static void listaCompras() {
+	public static void listaCompras() {
 		System.out.println("\nListado de compras registradas: \n");
 		System.out.println(estilosConsola.ANSI_PURPLE + "Id   Dni    Serial" + estilosConsola.ANSI_WHITE);
 

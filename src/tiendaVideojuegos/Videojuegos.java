@@ -8,9 +8,9 @@ import java.util.Random;
 public class Videojuegos {
 
 	private static ArrayList<String[]> juegos = new ArrayList<>();
-	File archivo;
 
-	protected void crearArchivoJuegos() {
+	public void crearArchivoJuegos() {
+		File archivo;
 		archivo = new File("juegos.txt");
 		try {
 			if (archivo.createNewFile()) {
@@ -23,7 +23,7 @@ public class Videojuegos {
 		}
 	}
 
-	protected static void cargarJuegosEnArchivo() {
+	public static void cargarJuegosEnArchivo() {
 		juegos.clear();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("juegos.txt"));
@@ -38,7 +38,7 @@ public class Videojuegos {
 		}
 	}
 
-	protected static void agregarJuego(Scanner sc) {
+	public static void agregarJuego(Scanner sc) {
 		sc.nextLine();
 		String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del juego: ");
 		String consola = estilosConsola.solicitarTexto(sc, "Introduce la consola: ");
@@ -50,7 +50,7 @@ public class Videojuegos {
 		System.out.println("\nJuego añadido correctamente.\n");
 	}
 
-	protected static void guardarJuegosEnArchivo() {
+	public static void guardarJuegosEnArchivo() {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("juegos.txt"));
 			for (String[] juego : juegos) {
@@ -63,7 +63,7 @@ public class Videojuegos {
 		}
 	}
 
-	protected static void guardarJuegos() {
+	public static void guardarJuegos() {
 		guardarJuegosEnArchivo();
 		System.out.println("\nJuegos guardados correctamente en el archivo.");
 	}
@@ -80,7 +80,7 @@ public class Videojuegos {
 		return serial.toString();
 	}
 
-	protected static void buscarJuego(Scanner sc) {
+	public static void buscarJuego(Scanner sc) {
 		sc.nextLine();
 		String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del juego:");
 		boolean encontrado = false;
@@ -96,7 +96,7 @@ public class Videojuegos {
 			System.out.println(estilosConsola.ANSI_RED + "\nJuego no encontrado." + estilosConsola.ANSI_WHITE);
 	}
 
-	protected static void cambiarEstadoJuego(Scanner sc) {
+	public static void cambiarEstadoJuego(Scanner sc) {
 		sc.nextLine();
 		String serial = estilosConsola.solicitarTexto(sc, "\\nIntroduce el Serial del juego a modificar: ");
 		boolean encontrado = false;
@@ -114,7 +114,7 @@ public class Videojuegos {
 			System.out.println("Juego no encontrado.");
 	}
 
-	protected static void listaJuegos() {
+	public static void listaJuegos() {
 		System.out.println("\nListado de juegos registrados: \n");
 		System.out.println(
 				estilosConsola.ANSI_PURPLE + "Serial        Juego         Ptf     Estado " + estilosConsola.ANSI_WHITE);
@@ -139,7 +139,7 @@ public class Videojuegos {
 		}
 	}
 
-	protected static String obtenerJuego(Scanner sc) {
+	public static String obtenerJuego(Scanner sc) {
 		String serial = estilosConsola.solicitarTexto(sc, "\nIntroduce el serial del juego:");
 		boolean encontrado = false;
 		for (String[] juego : juegos) {
