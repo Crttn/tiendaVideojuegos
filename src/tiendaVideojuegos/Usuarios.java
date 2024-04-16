@@ -86,7 +86,7 @@ public class Usuarios {
 	
 	protected static void listaUsuarios() {
     	System.out.println("\nListado de usuarios registrados: \n");
-    	System.out.println(estilosConsola.ANSI_PURPLE + "Teléfono 		Nombre 		Apellidos 			Dni  	  Correo " + estilosConsola.ANSI_WHITE);
+    	System.out.println(estilosConsola.ANSI_PURPLE + "Teléfono       Nombre	 Apellidos	Dni	       Correo " + estilosConsola.ANSI_WHITE);
 
         // Calcular la longitud máxima de cada campo
         int[] maxLengths = new int[5];
@@ -100,7 +100,7 @@ public class Usuarios {
             for (int i = 0; i < usuario.length; i++) {
                 System.out.print(usuario[i]);
                 // Añadir espacios para alinear los datos
-                for (int j = 0; j < maxLengths[i] - usuario[i].length() + 4; j++) {
+                for (int j = 0; j < maxLengths[i] - usuario[i].length() + 6; j++) {
                     System.out.print(" ");
                 }
             }
