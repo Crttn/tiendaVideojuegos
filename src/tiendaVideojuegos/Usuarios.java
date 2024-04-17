@@ -143,4 +143,57 @@ public class Usuarios {
 			System.out.println(estilosConsola.ANSI_RED + "\nUsuario no encontrado." + estilosConsola.ANSI_WHITE);
 		return null;
 	}
+
+	public static void modificarUsuario(Scanner sc) {
+		int opcion;
+		do {
+			estilosConsola.menuModUsuario();
+			opcion = estilosConsola.solicitarOpcion(sc);
+			switch (opcion) {
+			case 1:
+				sc.nextLine();
+				String telefono = estilosConsola.solicitarTelefono(sc, "\nIntrodiuce el número de teléfono: ");
+				boolean telefonoEncontrado = false;
+				for (String[] usuario : usuarios) {
+					if (usuario[0].equals(telefono)) {
+						String nuevoTelefono = estilosConsola.solicitarTelefono(sc,
+								"\nIntrodiuce el nuevo número de teléfono: ");
+						usuario[0] = nuevoTelefono;
+						guardarUsuariosEnArchivo();
+						System.out.println(estilosConsola.ANSI_GREEN + "\nEl teléfono se ha cambiado correctamente." + estilosConsola.ANSI_WHITE);
+						telefonoEncontrado = true;
+						break;
+					}
+				}
+				if (!telefonoEncontrado) {
+					System.out.println(estilosConsola.ANSI_RED + "El teléfono no pertenece a ningún usuario." + estilosConsola.ANSI_WHITE);
+				}
+				break;
+			case 2:
+				sc.nextLine();
+				String correo = estilosConsola.solicitarCorreo(sc, "\nIntrodiuce el correo: ");
+				boolean correoEncontrado = false;
+				for (String[] usuario : usuarios) {
+					if (usuario[4].equals(correo)) {
+						String nuevoCorreo = estilosConsola.solicitarCorreo(sc,
+								"\nIntrodiuce el nuevo correo: ");
+						usuario[4] = nuevoCorreo;
+						guardarUsuariosEnArchivo();
+						System.out.println(estilosConsola.ANSI_GREEN + "\nEl correo se ha cambiado correctamente." + estilosConsola.ANSI_WHITE);
+						correoEncontrado = true;
+						break;
+					}
+				}
+				if (!correoEncontrado) {
+					System.out.println(estilosConsola.ANSI_RED + "El correo no pertenece a ningún usuario." + estilosConsola.ANSI_WHITE);
+				}
+				break;
+			case 3:
+				System.out.println("Volviendo al menu principal");
+				break;
+			default:
+				System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
+			}
+		} while (opcion != 3);
+	}
 }

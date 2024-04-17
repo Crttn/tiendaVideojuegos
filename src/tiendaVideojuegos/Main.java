@@ -21,14 +21,14 @@ public class Main {
 			estilos.separador();
 			estilos.menuPrincipalCartel();
 			estilos.menuPrincipal();
-			opcion = estilos.solicitarOpcion(sc);
+			opcion = estilosConsola.solicitarOpcion(sc);
 			switch (opcion) {
 			case 1:
 				// juegos.crearArchivoJuegos(); -- > Crear archivo "juegos.txt"
 				estilos.separador();
 				estilos.menuJuegosCartelera();
 				estilos.menuJuegos();
-				eleccion = estilos.solicitarOpcion(sc);
+				eleccion = estilosConsola.solicitarOpcion(sc);
 
 				switch (eleccion) {
 				case 1:
@@ -55,7 +55,7 @@ public class Main {
 				estilos.separador();
 				estilos.menuUsuariosCartelera();
 				estilos.menuUsuarios();
-				eleccion = estilos.solicitarOpcion(sc);
+				eleccion = estilosConsola.solicitarOpcion(sc);
 
 				switch (eleccion) {
 				case 1:
@@ -68,9 +68,12 @@ public class Main {
 					Usuarios.listaUsuarios();
 					break;
 				case 4:
-					Usuarios.eliminarUsuario(sc);
+					Usuarios.modificarUsuario(sc);;
 					break;
 				case 5:
+					Usuarios.eliminarUsuario(sc);
+					break;
+				case 6:
 					System.out.println("Volviendo al menu principal");
 					break;
 				default:
@@ -82,7 +85,7 @@ public class Main {
 				estilos.separador();
 				estilos.menuComprasCartelera();
 				estilos.menuCompras();
-				eleccion = estilos.solicitarOpcion(sc);
+				eleccion = estilosConsola.solicitarOpcion(sc);
 
 				switch (eleccion) {
 				case 1:

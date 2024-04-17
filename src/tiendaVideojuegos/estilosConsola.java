@@ -32,17 +32,24 @@ public class estilosConsola {
 		System.out.println("\n1. " + ANSI_CYAN + "Agregar usuarios" + ANSI_WHITE);
 		System.out.println("2. " + ANSI_CYAN + "Buscar usuarios" + ANSI_WHITE);
 		System.out.println("3. " + ANSI_CYAN + "Lista de usuarios" + ANSI_WHITE);
-		System.out.println("4. " + ANSI_CYAN + "Eliminar usuarios" + ANSI_WHITE);
-		System.out.println("5." + ANSI_RED + " Volver" + ANSI_WHITE);
+		System.out.println("4. " + ANSI_CYAN + "Modificar usuarios" + ANSI_WHITE);
+		System.out.println("5. " + ANSI_CYAN + "Eliminar usuarios" + ANSI_WHITE);
+		System.out.println("6." + ANSI_RED + " Volver" + ANSI_WHITE);
 	}
 
 	public void menuCompras() {
 		System.out.println("\n1." + ANSI_CYAN + "Generar compra" + ANSI_WHITE);
-		System.out.println("2." + ANSI_CYAN + "Generar compra" + ANSI_WHITE);
+		System.out.println("2." + ANSI_CYAN + "Lista de compras" + ANSI_WHITE);
 		System.out.println("3." + ANSI_RED + "Volver" + ANSI_WHITE);
 	}
 	
-	public int solicitarOpcion(Scanner sc) {
+	public static void menuModUsuario() {
+		System.out.println("\n1." + ANSI_CYAN + "Modificar teléfono" + ANSI_WHITE);
+		System.out.println("2." + ANSI_CYAN + "Modificar correo" + ANSI_WHITE);
+		System.out.println("3." + ANSI_RED + "Volver" + ANSI_WHITE);
+	}
+	
+	public static int solicitarOpcion(Scanner sc) {
 		System.out.print("\nIntroduce una opción: ");
 		return sc.nextInt();
 	}
