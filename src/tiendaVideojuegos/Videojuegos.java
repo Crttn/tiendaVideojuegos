@@ -14,9 +14,9 @@ public class Videojuegos {
 		archivo = new File("juegos.txt");
 		try {
 			if (archivo.createNewFile()) {
-				System.out.println("Archivo creado con éxito");
+				System.out.println(estilosConsola.ANSI_GREEN + "Archivo creado con éxito" + estilosConsola.ANSI_WHITE);
 			} else {
-				System.out.println("Error al crear el archivo");
+				System.out.println(estilosConsola.ANSI_RED + "Error al crear el archivo" + estilosConsola.ANSI_WHITE);
 			}
 		} catch (IOException e) {
 			e.printStackTrace(System.out);
@@ -34,20 +34,20 @@ public class Videojuegos {
 			}
 			br.close();
 		} catch (IOException e) {
-			System.out.println("Error al cargar los juegos.");
+			System.out.println(estilosConsola.ANSI_RED + "Error al cargar los juegos." + estilosConsola.ANSI_WHITE);
 		}
 	}
 
 	public static void agregarJuego(Scanner sc) {
 		sc.nextLine();
 		String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del juego: ");
-		String consola = estilosConsola.solicitarTexto(sc, "Introduce la consola: ");
-		String estado = estilosConsola.solicitarTexto(sc, "Introduce el estado del juego: ");
+		String consola = estilosConsola.solicitarConsola(sc, "Introduce la consola: ");
+		String estado = estilosConsola.solicitarEstado(sc, "Introduce el estado del juego: ");
 		String serial = assignSerial();
 		String[] nuevoJuego = { serial, nombre, consola, estado };
 		juegos.add(nuevoJuego);
 		guardarJuegosEnArchivo();
-		System.out.println("\nJuego añadido correctamente.\n");
+		System.out.println(estilosConsola.ANSI_GREEN + "\nJuego añadido correctamente.\n" + estilosConsola.ANSI_WHITE);
 	}
 
 	public static void guardarJuegosEnArchivo() {
@@ -59,13 +59,13 @@ public class Videojuegos {
 			}
 			bw.close();
 		} catch (IOException e) {
-			System.out.println("Error al guardar los juegos.");
+			System.out.println(estilosConsola.ANSI_RED + "Error al guardar los juegos." + estilosConsola.ANSI_WHITE);
 		}
 	}
 
 	public static void guardarJuegos() {
 		guardarJuegosEnArchivo();
-		System.out.println("\nJuegos guardados correctamente en el archivo.");
+		System.out.println(estilosConsola.ANSI_GREEN + "\nJuegos guardados correctamente en el archivo." + estilosConsola.ANSI_WHITE);
 	}
 
 	private static String assignSerial() {
@@ -105,7 +105,7 @@ public class Videojuegos {
 				String nuevoEstado = estilosConsola.solicitarTexto(sc, "Ingrese el nuevo estado del juego: ");
 				juego[3] = nuevoEstado;
 				guardarJuegosEnArchivo();
-				System.out.println("\nEl estado del juego se ha modificado correctamente.");
+				System.out.println(estilosConsola.ANSI_GREEN + "\nEl estado del juego se ha modificado correctamente." + estilosConsola.ANSI_WHITE);
 				encontrado = true;
 				break;
 			}
@@ -117,7 +117,7 @@ public class Videojuegos {
 	public static void listaJuegos() {
 		System.out.println("\nListado de juegos registrados: \n");
 		System.out.println(
-				estilosConsola.ANSI_PURPLE + "Serial        Juego         Ptf     Estado " + estilosConsola.ANSI_WHITE);
+				estilosConsola.ANSI_PURPLE + "Serial        Juego           Ptf       Estado " + estilosConsola.ANSI_WHITE);
 
 		// Calcular la longitud máxima de cada campo
 		int[] maxLengths = new int[4];

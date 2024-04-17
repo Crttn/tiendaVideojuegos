@@ -59,7 +59,7 @@ public class estilosConsola {
 			System.out.print(texto);
 			nombre = sc.nextLine();
 			if (!nombre.matches(patronNombre)) {
-				System.out.println("El formato es incorrecto. No se admiten números ni espacion en blanco.");
+				System.out.println(ANSI_RED + "El formato es incorrecto. No se admiten números ni espacion en blanco." + ANSI_WHITE);
 			}
 		} while (!nombre.matches(patronNombre));
 		return nombre;
@@ -72,7 +72,7 @@ public class estilosConsola {
 			System.out.print(texto);
 			dni = sc.nextLine().toUpperCase();
 			if (!dni.matches(patronDni)) {
-				System.out.println("El formato del DNI es incorrecto. Debe tener 8 dígitos seguidos de una letra.");
+				System.out.println(ANSI_RED + "El formato del DNI es incorrecto. Debe tener 8 dígitos seguidos de una letra." + ANSI_WHITE);
 			}
 		} while (!dni.matches(patronDni));
 		return dni;
@@ -85,7 +85,7 @@ public class estilosConsola {
 			System.out.print(texto);
 			telefono = sc.nextLine();
 			if (!telefono.matches(patronTelefono)){
-				System.out.println("El formato del Telefono es incorrecto. Debe tener 9 dígitos sin espacios");
+				System.out.println(ANSI_RED + "El formato del Telefono es incorrecto. Debe tener 9 dígitos sin espacios" + ANSI_WHITE);
 			}
 		} while (!telefono.matches(patronTelefono));
 		return telefono;
@@ -98,10 +98,54 @@ public class estilosConsola {
 			System.out.print(texto);
 			correo = sc.nextLine();
 			if (!correo.matches(patronCorreo)) {
-				System.out.println("El formato del Correo es incorrecto. Ejemplo: corrreo@correo.com");
+				System.out.println(ANSI_RED + "El formato del Correo es incorrecto. Ejemplo: corrreo@correo.com" + ANSI_WHITE);
 			}
 		} while(!correo.matches(patronCorreo));
 		return correo;
+	}
+	
+	public static String solicitarConsola(Scanner sc, String texto) {
+		String[] consolas = {"PS5", "XBOX", "PC", "SWITCH"};
+		String consola;
+		boolean esValido;
+		do {
+			System.out.println("\nConsolas disponibles |PS5|XBOX|PC|SWITCH|");
+			System.out.print(texto);
+			consola = sc.nextLine().toUpperCase();
+			esValido = false;
+			for (String consola1 : consolas) {
+				if (consola.equals(consola1)) {
+					esValido = true;
+					break;
+				}
+			}
+ 			if (!esValido) {
+				System.out.println(ANSI_RED + "\nError al introducir el nombre de la consola." + ANSI_WHITE);
+			}
+		} while(!esValido);
+		return consola;
+	}
+	
+	public static String solicitarEstado(Scanner sc, String texto) {
+		String[] estados = {"en venta", "obsoleto"};
+		String estado;
+		boolean esValido;
+		do {
+			System.out.println("\nEstados de videojuegos |En venta|Obsoleto|");
+			System.out.print(texto);
+			estado = sc.nextLine().toLowerCase();
+			esValido = false;
+			for (String estado1 : estados) {
+				if (estado.equals(estado1)) {
+					esValido = true;
+					break;
+				}
+			}
+ 			if (!esValido) {
+				System.out.println(ANSI_RED + "\nError al introducir el estado del videojuego." + ANSI_WHITE);
+			}
+		} while(!esValido);
+		return estado;
 	}
 
 	public void cartelera() {
