@@ -43,7 +43,7 @@ public class Videojuegos {
 		String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del juego: ");
 		String consola = estilosConsola.solicitarConsola(sc, "Introduce la consola: ");
 		String estado = estilosConsola.solicitarEstado(sc, "Introduce el estado del juego: ");
-		String serial = assignSerial();
+		String serial = asignarSerial();
 		String[] nuevoJuego = { serial, nombre, consola, estado };
 		juegos.add(nuevoJuego);
 		guardarJuegosEnArchivo();
@@ -68,7 +68,7 @@ public class Videojuegos {
 		System.out.println(estilosConsola.ANSI_GREEN + "\nJuegos guardados correctamente en el archivo." + estilosConsola.ANSI_WHITE);
 	}
 
-	private static String assignSerial() {
+	private static String asignarSerial() {
 		Random rd = new Random();
 		StringBuilder serial = new StringBuilder();
 		String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -76,6 +76,12 @@ public class Videojuegos {
 		for (int i = 0; i < 10; i++) {
 			int patron = rd.nextInt(caracteres.length());
 			serial.append(caracteres.charAt(patron));
+		}
+		
+		for (String[] serial1 : juegos) {
+			if (serial1[0].equals(serial.toString())) {
+				return asignarSerial();
+			}
 		}
 		return serial.toString();
 	}
