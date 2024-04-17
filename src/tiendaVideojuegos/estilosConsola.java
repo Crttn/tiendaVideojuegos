@@ -13,14 +13,14 @@ public class estilosConsola {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-	protected void menuPrincipal() {
+	public void menuPrincipal() {
 		System.out.println("\n1. Opciones de juegos");
 		System.out.println("2. Opciones de usuarios");
 		System.out.println("3. Opciones de compra");
 		System.out.println("4. " + ANSI_RED + "Salir del programa" + ANSI_WHITE);
 	}
 
-	protected void menuJuegos() {
+	public void menuJuegos() {
 		System.out.println("\n1." + ANSI_CYAN + "Agregar juegos" + ANSI_WHITE);
 		System.out.println("2." + ANSI_CYAN + "Cambiar el estado de juegos" + ANSI_WHITE);
 		System.out.println("3." + ANSI_CYAN + "Buscar juegos" + ANSI_WHITE);
@@ -28,7 +28,7 @@ public class estilosConsola {
 		System.out.println("5. " + ANSI_RED + "Volver" + ANSI_WHITE);
 	}
 
-	protected void menuUsuarios() {
+	public void menuUsuarios() {
 		System.out.println("\n1. " + ANSI_CYAN + "Agregar usuarios" + ANSI_WHITE);
 		System.out.println("2. " + ANSI_CYAN + "Buscar usuarios" + ANSI_WHITE);
 		System.out.println("3. " + ANSI_CYAN + "Lista de usuarios" + ANSI_WHITE);
@@ -36,23 +36,23 @@ public class estilosConsola {
 		System.out.println("5." + ANSI_RED + " Volver" + ANSI_WHITE);
 	}
 
-	protected void menuCompras() {
+	public void menuCompras() {
 		System.out.println("\n1." + ANSI_CYAN + "Generar compra" + ANSI_WHITE);
 		System.out.println("2." + ANSI_CYAN + "Generar compra" + ANSI_WHITE);
 		System.out.println("3." + ANSI_RED + "Volver" + ANSI_WHITE);
 	}
 
-	protected int solicitarOpcion(Scanner sc) {
+	public int solicitarOpcion(Scanner sc) {
 		System.out.print("\nIntroduce una opción: ");
 		return sc.nextInt();
 	}
 
-	protected static String solicitarTexto(Scanner sc, String texto) {
+	public static String solicitarTexto(Scanner sc, String texto) {
 		System.out.print(texto);
 		return sc.nextLine();
 	}
 
-	protected void cartelera() {
+	public void cartelera() {
 		System.out.println("\n" + ANSI_GREEN
 				+ " ____  __  ____  __ _  ____   __     ____  ____    _  _  __  ____  ____  __     __  _  _  ____  ___   __   ____ \r\n"
 				+ "(_  _)(  )(  __)(  ( \\(    \\ / _\\   (    \\(  __)  / )( \\(  )(    \\(  __)/  \\  _(  )/ )( \\(  __)/ __) /  \\ / ___)\r\n"
@@ -87,7 +87,7 @@ public class estilosConsola {
 						+ " \\___)\\__/ \\_)(_/(__)  (__\\_)\\_/\\_/(____/");
 	}
 
-	protected void separador() {
+	public void separador() {
 		System.out.println(" ");
 		for (int i = 0; i < 120; i++) {
 			System.out.print("═");
