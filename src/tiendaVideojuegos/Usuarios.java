@@ -57,12 +57,12 @@ public class Usuarios {
 
 	public static void agregarUsuario(Scanner sc) {
 		sc.nextLine();
-		String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del usuario: ");
-		String apellidos = estilosConsola.solicitarTexto(sc, "Introduce los apellidos: ");
-		String dni = estilosConsola.solicitarTexto(sc, "Introduce el dni: ");
-		String telefono = estilosConsola.solicitarTexto(sc, "Introduce el teléfono: ");
-		String correo = estilosConsola.solicitarTexto(sc, "Introduce el correo: ");
-		String[] nuevoJuego = { telefono, nombre, apellidos, dni, correo };
+		String nombre = estilosConsola.solicitarNombre(sc, "\nIntroduce el nombre del usuario: ");
+		String apellido = estilosConsola.solicitarNombre(sc, "Introduce el primer apellido: ");
+		String dni = estilosConsola.solicitarDni(sc, "Introduce el dni: ");
+		String telefono = estilosConsola.solicitarTelefono(sc, "Introduce el teléfono: ");
+		String correo = estilosConsola.solicitarCorreo(sc, "Introduce el correo: ");
+		String[] nuevoJuego = { telefono, nombre, apellido, dni, correo };
 		usuarios.add(nuevoJuego);
 		guardarUsuariosEnArchivo();
 		System.out.println("\nUsuario añadido correctamente.\n");

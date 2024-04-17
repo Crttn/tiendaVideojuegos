@@ -41,7 +41,7 @@ public class estilosConsola {
 		System.out.println("2." + ANSI_CYAN + "Generar compra" + ANSI_WHITE);
 		System.out.println("3." + ANSI_RED + "Volver" + ANSI_WHITE);
 	}
-
+	
 	public int solicitarOpcion(Scanner sc) {
 		System.out.print("\nIntroduce una opción: ");
 		return sc.nextInt();
@@ -50,6 +50,58 @@ public class estilosConsola {
 	public static String solicitarTexto(Scanner sc, String texto) {
 		System.out.print(texto);
 		return sc.nextLine();
+	}
+	
+	public static String solicitarNombre(Scanner sc, String texto) {
+		String patronNombre = "^[a-zA-ZÁáÉéÍíÓóÚúÑñÜü\\s]+$";
+		String nombre;
+		do {
+			System.out.print(texto);
+			nombre = sc.nextLine();
+			if (!nombre.matches(patronNombre)) {
+				System.out.println("El formato es incorrecto. No se admiten números ni espacion en blanco.");
+			}
+		} while (!nombre.matches(patronNombre));
+		return nombre;
+	}
+	
+	public static String solicitarDni(Scanner sc, String texto) {
+		String patronDni = "^[0-9]{8}[A-HJ-NP-TV-Za-hj-np-tv-z0-9]$";
+		String dni;
+		do {
+			System.out.print(texto);
+			dni = sc.nextLine().toUpperCase();
+			if (!dni.matches(patronDni)) {
+				System.out.println("El formato del DNI es incorrecto. Debe tener 8 dígitos seguidos de una letra.");
+			}
+		} while (!dni.matches(patronDni));
+		return dni;
+	}
+	
+	public static String solicitarTelefono(Scanner sc, String texto) {
+		String patronTelefono = "^[0-9]{9}";
+		String telefono;
+		do {
+			System.out.print(texto);
+			telefono = sc.nextLine();
+			if (!telefono.matches(patronTelefono)){
+				System.out.println("El formato del Telefono es incorrecto. Debe tener 9 dígitos sin espacios");
+			}
+		} while (!telefono.matches(patronTelefono));
+		return telefono;
+	}
+	
+	public static String solicitarCorreo(Scanner sc, String texto) {
+		String patronCorreo = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+		String correo;
+		do {
+			System.out.print(texto);
+			correo = sc.nextLine();
+			if (!correo.matches(patronCorreo)) {
+				System.out.println("El formato del Correo es incorrecto. Ejemplo: corrreo@correo.com");
+			}
+		} while(!correo.matches(patronCorreo));
+		return correo;
 	}
 
 	public void cartelera() {
