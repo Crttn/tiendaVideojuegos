@@ -104,11 +104,11 @@ public class Videojuegos {
 
 	public static void cambiarEstadoJuego(Scanner sc) {
 		sc.nextLine();
-		String serial = estilosConsola.solicitarTexto(sc, "\\nIntroduce el Serial del juego a modificar: ");
+		String serial = estilosConsola.solicitarTexto(sc, "\nIntroduce el Serial del juego a modificar: ");
 		boolean encontrado = false;
 		for (String[] juego : juegos) {
 			if (juego[0].equals(serial)) {
-				String nuevoEstado = estilosConsola.solicitarTexto(sc, "Ingrese el nuevo estado del juego: ");
+				String nuevoEstado = estilosConsola.solicitarTexto(sc, "\nIngrese el nuevo estado del juego: ");
 				juego[3] = nuevoEstado;
 				guardarJuegosEnArchivo();
 				System.out.println(estilosConsola.ANSI_GREEN + "\nEl estado del juego se ha modificado correctamente." + estilosConsola.ANSI_WHITE);

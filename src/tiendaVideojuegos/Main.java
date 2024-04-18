@@ -44,10 +44,10 @@ public class Main {
 					Videojuegos.listaJuegos();
 					break;
 				case 5:
-					System.out.println("Volviendo al menu principal");
+					System.out.println("\nVolviendo al menu principal");
 					break;
 				default:
-					System.out.println("Opción no válida. Por favor, ingrese un número válido.");
+					System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
 				}
 
 				break;
@@ -74,7 +74,7 @@ public class Main {
 					Usuarios.eliminarUsuario(sc);
 					break;
 				case 6:
-					System.out.println("Volviendo al menu principal");
+					System.out.println("\nVolviendo al menu principal");
 					break;
 				default:
 					System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
@@ -95,7 +95,7 @@ public class Main {
 					Compras.listaCompras();
 					break;
 				case 3:
-					System.out.println("Volviendo al menu principal");
+					System.out.println("\nVolviendo al menu principal");
 					break;
 				default:
 					System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
