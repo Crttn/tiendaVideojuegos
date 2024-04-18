@@ -56,17 +56,18 @@ public class Usuarios {
 		String apellido = estilosConsola.solicitarNombre(sc, "Introduce el primer apellido: ");
 		String dni = estilosConsola.solicitarDni(sc, "Introduce el dni: ");
 		String dniComprobado = comprobarDni(dni);
-		if(dniComprobado != null) {
+		if (dniComprobado != null) {
 			String telefono = estilosConsola.solicitarTelefono(sc, "Introduce el teléfono: ");
 			String telefonoComprobado = comprobarTelefono(telefono);
 			if (telefonoComprobado != null) {
 				String correo = estilosConsola.solicitarCorreo(sc, "Introduce el correo: ");
 				String correoComprobado = comprobarCorreo(correo);
 				if (correoComprobado != null) {
-					String[] nuevoJuego = {telefono, nombre, apellido, dni, correo };
+					String[] nuevoJuego = { telefono, nombre, apellido, dni, correo };
 					usuarios.add(nuevoJuego);
 					guardarUsuariosEnArchivo();
-					System.out.println(estilosConsola.ANSI_GREEN + "\nUsuario añadido correctamente.\n" + estilosConsola.ANSI_WHITE);
+					System.out.println(estilosConsola.ANSI_GREEN + "\nUsuario añadido correctamente.\n"
+							+ estilosConsola.ANSI_WHITE);
 				} else {
 					System.out.println(estilosConsola.ANSI_RED + "\nEl correo ya existe." + estilosConsola.ANSI_WHITE);
 				}
@@ -77,27 +78,27 @@ public class Usuarios {
 			System.out.println(estilosConsola.ANSI_RED + "\nEl dni ya existe." + estilosConsola.ANSI_WHITE);
 		}
 	}
-	
+
 	public static String comprobarTelefono(String telefono) {
-		for (String[] usuario : usuarios ) {
+		for (String[] usuario : usuarios) {
 			if (usuario[0].equals(telefono)) {
 				return null;
 			}
 		}
 		return telefono;
 	}
-	
+
 	public static String comprobarDni(String dni) {
-		for (String[] usuario : usuarios ) {
+		for (String[] usuario : usuarios) {
 			if (usuario[3].equals(dni)) {
 				return null;
 			}
 		}
 		return dni;
 	}
-	
+
 	public static String comprobarCorreo(String correo) {
-		for (String[] usuario : usuarios ) {
+		for (String[] usuario : usuarios) {
 			if (usuario[4].equals(correo)) {
 				return null;
 			}
@@ -176,7 +177,8 @@ public class Usuarios {
 				return dni;
 			}
 		}
-		if (!encontrado) System.out.println(estilosConsola.ANSI_RED + "\nUsuario no encontrado." + estilosConsola.ANSI_WHITE);
+		if (!encontrado)
+			System.out.println(estilosConsola.ANSI_RED + "\nUsuario no encontrado." + estilosConsola.ANSI_WHITE);
 		return null;
 	}
 
@@ -192,16 +194,19 @@ public class Usuarios {
 				boolean telefonoEncontrado = false;
 				for (String[] usuario : usuarios) {
 					if (usuario[0].equals(telefono)) {
-						String nuevoTelefono = estilosConsola.solicitarTelefono(sc, "\nIntrodiuce el nuevo número de teléfono: ");
+						String nuevoTelefono = estilosConsola.solicitarTelefono(sc,
+								"\nIntrodiuce el nuevo número de teléfono: ");
 						usuario[0] = nuevoTelefono;
 						guardarUsuariosEnArchivo();
-						System.out.println(estilosConsola.ANSI_GREEN + "\nEl teléfono se ha cambiado correctamente." + estilosConsola.ANSI_WHITE);
+						System.out.println(estilosConsola.ANSI_GREEN + "\nEl teléfono se ha cambiado correctamente."
+								+ estilosConsola.ANSI_WHITE);
 						telefonoEncontrado = true;
 						break;
 					}
 				}
 				if (!telefonoEncontrado) {
-					System.out.println(estilosConsola.ANSI_RED + "El teléfono no pertenece a ningún usuario." + estilosConsola.ANSI_WHITE);
+					System.out.println(estilosConsola.ANSI_RED + "El teléfono no pertenece a ningún usuario."
+							+ estilosConsola.ANSI_WHITE);
 				}
 				break;
 			case 2:
@@ -210,17 +215,18 @@ public class Usuarios {
 				boolean correoEncontrado = false;
 				for (String[] usuario : usuarios) {
 					if (usuario[4].equals(correo)) {
-						String nuevoCorreo = estilosConsola.solicitarCorreo(sc,
-								"\nIntrodiuce el nuevo correo: ");
+						String nuevoCorreo = estilosConsola.solicitarCorreo(sc, "\nIntrodiuce el nuevo correo: ");
 						usuario[4] = nuevoCorreo;
 						guardarUsuariosEnArchivo();
-						System.out.println(estilosConsola.ANSI_GREEN + "\nEl correo se ha cambiado correctamente." + estilosConsola.ANSI_WHITE);
+						System.out.println(estilosConsola.ANSI_GREEN + "\nEl correo se ha cambiado correctamente."
+								+ estilosConsola.ANSI_WHITE);
 						correoEncontrado = true;
 						break;
 					}
 				}
 				if (!correoEncontrado) {
-					System.out.println(estilosConsola.ANSI_RED + "El correo no pertenece a ningún usuario." + estilosConsola.ANSI_WHITE);
+					System.out.println(estilosConsola.ANSI_RED + "El correo no pertenece a ningún usuario."
+							+ estilosConsola.ANSI_WHITE);
 				}
 				break;
 			case 3:

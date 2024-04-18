@@ -65,7 +65,8 @@ public class Videojuegos {
 
 	public static void guardarJuegos() {
 		guardarJuegosEnArchivo();
-		System.out.println(estilosConsola.ANSI_GREEN + "\nJuegos guardados correctamente en el archivo." + estilosConsola.ANSI_WHITE);
+		System.out.println(estilosConsola.ANSI_GREEN + "\nJuegos guardados correctamente en el archivo."
+				+ estilosConsola.ANSI_WHITE);
 	}
 
 	private static String asignarSerial() {
@@ -77,7 +78,7 @@ public class Videojuegos {
 			int patron = rd.nextInt(caracteres.length());
 			serial.append(caracteres.charAt(patron));
 		}
-		
+
 		for (String[] serial1 : juegos) {
 			if (serial1[0].equals(serial.toString())) {
 				return asignarSerial();
@@ -111,7 +112,8 @@ public class Videojuegos {
 				String nuevoEstado = estilosConsola.solicitarTexto(sc, "\nIngrese el nuevo estado del juego: ");
 				juego[3] = nuevoEstado;
 				guardarJuegosEnArchivo();
-				System.out.println(estilosConsola.ANSI_GREEN + "\nEl estado del juego se ha modificado correctamente." + estilosConsola.ANSI_WHITE);
+				System.out.println(estilosConsola.ANSI_GREEN + "\nEl estado del juego se ha modificado correctamente."
+						+ estilosConsola.ANSI_WHITE);
 				encontrado = true;
 				break;
 			}
@@ -122,8 +124,8 @@ public class Videojuegos {
 
 	public static void listaJuegos() {
 		System.out.println("\nListado de juegos registrados: \n");
-		System.out.println(
-				estilosConsola.ANSI_PURPLE + "Serial        Juego           Ptf       Estado " + estilosConsola.ANSI_WHITE);
+		System.out.println(estilosConsola.ANSI_PURPLE + "Serial        Juego           Ptf       Estado "
+				+ estilosConsola.ANSI_WHITE);
 
 		// Calcular la longitud máxima de cada campo
 		int[] maxLengths = new int[4];

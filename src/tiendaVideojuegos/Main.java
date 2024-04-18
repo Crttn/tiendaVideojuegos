@@ -68,7 +68,7 @@ public class Main {
 					Usuarios.listaUsuarios();
 					break;
 				case 4:
-					Usuarios.modificarUsuario(sc);;
+					Usuarios.modificarUsuario(sc);
 					break;
 				case 5:
 					Usuarios.eliminarUsuario(sc);

@@ -193,7 +193,7 @@ public class estilosConsola {
 	public void separador() {
 		System.out.println(" ");
 		for (int i = 0; i < 120; i++) {
-			System.out.print("═");
+			System.out.print(ANSI_YELLOW + "═" + ANSI_WHITE);
 		}
 		System.out.println(" ");
 	}

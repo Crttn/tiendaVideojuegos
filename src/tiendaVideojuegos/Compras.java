@@ -69,7 +69,7 @@ public class Compras {
 			System.out.println("\nNo se puede realizar la compra porque el juego no fue encontrado.");
 			return;
 		}
-		
+
 		Date myDate = new Date();
 		String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
 
