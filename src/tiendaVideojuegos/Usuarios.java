@@ -62,10 +62,52 @@ public class Usuarios {
 		String dni = estilosConsola.solicitarDni(sc, "Introduce el dni: ");
 		String telefono = estilosConsola.solicitarTelefono(sc, "Introduce el teléfono: ");
 		String correo = estilosConsola.solicitarCorreo(sc, "Introduce el correo: ");
-		String[] nuevoJuego = { telefono, nombre, apellido, dni, correo };
-		usuarios.add(nuevoJuego);
-		guardarUsuariosEnArchivo();
-		System.out.println("\nUsuario añadido correctamente.\n");
+		String telefonoComprobado = comprobarTelefono(telefono);
+		String dniComprobado = comprobarDni(dni);
+		String correoComprobado = comprobarCorreo(correo);
+		if(telefonoComprobado != null) {
+			if (dniComprobado != null) {
+				if (correoComprobado != null) {
+					String[] nuevoJuego = {telefono, nombre, apellido, dni, correo };
+					usuarios.add(nuevoJuego);
+					guardarUsuariosEnArchivo();
+					System.out.println("\nUsuario añadido correctamente.\n");
+				} else {
+					System.out.println("El correo ya existe.");
+				}
+			} else {
+				System.out.println("El dni ya existe.");
+			}
+		} else {
+			System.out.println("El teléfono ya existe.");
+		}
+	}
+	
+	public static String comprobarTelefono(String telefono) {
+		for (String[] usuario : usuarios ) {
+			if (usuario[0].equals(telefono)) {
+				return null;
+			}
+		}
+		return telefono;
+	}
+	
+	public static String comprobarDni(String dni) {
+		for (String[] usuario : usuarios ) {
+			if (usuario[3].equals(dni)) {
+				return null;
+			}
+		}
+		return dni;
+	}
+	
+	public static String comprobarCorreo(String correo) {
+		for (String[] usuario : usuarios ) {
+			if (usuario[0].equals(correo)) {
+				return null;
+			}
+		}
+		return correo;
 	}
 
 	public static void buscarUsuario(Scanner sc) {
@@ -139,8 +181,7 @@ public class Usuarios {
 				return dni;
 			}
 		}
-		if (!encontrado)
-			System.out.println(estilosConsola.ANSI_RED + "\nUsuario no encontrado." + estilosConsola.ANSI_WHITE);
+		if (!encontrado) System.out.println(estilosConsola.ANSI_RED + "\nUsuario no encontrado." + estilosConsola.ANSI_WHITE);
 		return null;
 	}
 
@@ -156,8 +197,7 @@ public class Usuarios {
 				boolean telefonoEncontrado = false;
 				for (String[] usuario : usuarios) {
 					if (usuario[0].equals(telefono)) {
-						String nuevoTelefono = estilosConsola.solicitarTelefono(sc,
-								"\nIntrodiuce el nuevo número de teléfono: ");
+						String nuevoTelefono = estilosConsola.solicitarTelefono(sc, "\nIntrodiuce el nuevo número de teléfono: ");
 						usuario[0] = nuevoTelefono;
 						guardarUsuariosEnArchivo();
 						System.out.println(estilosConsola.ANSI_GREEN + "\nEl teléfono se ha cambiado correctamente." + estilosConsola.ANSI_WHITE);
