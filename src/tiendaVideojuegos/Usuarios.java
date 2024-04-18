@@ -60,26 +60,26 @@ public class Usuarios {
 		String nombre = estilosConsola.solicitarNombre(sc, "\nIntroduce el nombre del usuario: ");
 		String apellido = estilosConsola.solicitarNombre(sc, "Introduce el primer apellido: ");
 		String dni = estilosConsola.solicitarDni(sc, "Introduce el dni: ");
-		String telefono = estilosConsola.solicitarTelefono(sc, "Introduce el teléfono: ");
-		String correo = estilosConsola.solicitarCorreo(sc, "Introduce el correo: ");
-		String telefonoComprobado = comprobarTelefono(telefono);
 		String dniComprobado = comprobarDni(dni);
-		String correoComprobado = comprobarCorreo(correo);
-		if(telefonoComprobado != null) {
-			if (dniComprobado != null) {
+		if(dniComprobado != null) {
+			String telefono = estilosConsola.solicitarTelefono(sc, "Introduce el teléfono: ");
+			String telefonoComprobado = comprobarTelefono(telefono);
+			if (telefonoComprobado != null) {
+				String correo = estilosConsola.solicitarCorreo(sc, "Introduce el correo: ");
+				String correoComprobado = comprobarCorreo(correo);
 				if (correoComprobado != null) {
 					String[] nuevoJuego = {telefono, nombre, apellido, dni, correo };
 					usuarios.add(nuevoJuego);
 					guardarUsuariosEnArchivo();
-					System.out.println("\nUsuario añadido correctamente.\n");
+					System.out.println(estilosConsola.ANSI_GREEN + "\nUsuario añadido correctamente.\n" + estilosConsola.ANSI_WHITE);
 				} else {
-					System.out.println("El correo ya existe.");
+					System.out.println(estilosConsola.ANSI_RED + "\nEl correo ya existe." + estilosConsola.ANSI_WHITE);
 				}
 			} else {
-				System.out.println("El dni ya existe.");
+				System.out.println(estilosConsola.ANSI_RED + "\nEl teléfono ya existe." + estilosConsola.ANSI_WHITE);
 			}
 		} else {
-			System.out.println("El teléfono ya existe.");
+			System.out.println(estilosConsola.ANSI_RED + "\nEl dni ya existe." + estilosConsola.ANSI_WHITE);
 		}
 	}
 	
@@ -103,7 +103,7 @@ public class Usuarios {
 	
 	public static String comprobarCorreo(String correo) {
 		for (String[] usuario : usuarios ) {
-			if (usuario[0].equals(correo)) {
+			if (usuario[4].equals(correo)) {
 				return null;
 			}
 		}
