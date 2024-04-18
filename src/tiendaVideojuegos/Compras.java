@@ -1,13 +1,10 @@
 package tiendaVideojuegos;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.text.SimpleDateFormat;
 
 public class Compras {
 
@@ -72,16 +69,19 @@ public class Compras {
 			System.out.println("\nNo se puede realizar la compra porque el juego no fue encontrado.");
 			return;
 		}
+		
+		Date myDate = new Date();
+		String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
 
 		String id = generarIdCompra();
-		String[] compra = { id + ", " + usuario + ", " + juego };
+		String[] compra = { id + ", " + usuario + ", " + juego + ", " + fecha };
 		compras.add(compra);
 		guardarCompraEnArchivo();
 	}
 
 	public static void listaCompras() {
 		System.out.println("\nListado de compras registradas: \n");
-		System.out.println(estilosConsola.ANSI_PURPLE + "Id   Dni    Serial" + estilosConsola.ANSI_WHITE);
+		System.out.println(estilosConsola.ANSI_PURPLE + "Id   Dni    	  Serial	Fecha" + estilosConsola.ANSI_WHITE);
 
 		// Calcular la longitud máxima de cada campo
 		int[] maxLengths = new int[5];
