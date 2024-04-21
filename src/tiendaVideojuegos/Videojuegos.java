@@ -9,11 +9,14 @@ public class Videojuegos {
 
 	private static ArrayList<String[]> juegos = new ArrayList<>();
 
-	public void crearArchivoJuegos() {
+	public static void crearArchivoJuegos() {
 		File archivo;
 		archivo = new File("juegos.txt");
 		try {
 			if (archivo.createNewFile()) {
+				String[] etiquetas = {estilosConsola.ANSI_PURPLE +  "Serial", "Juego", "Ptf", "Estado", "Precio" + estilosConsola.ANSI_WHITE};
+				juegos.add(etiquetas);
+				guardarJuegosEnArchivo();
 				System.out.println(estilosConsola.ANSI_GREEN + "Archivo creado con éxito" + estilosConsola.ANSI_WHITE);
 			} else {
 				System.out.println(estilosConsola.ANSI_RED + "Error al crear el archivo" + estilosConsola.ANSI_WHITE);
@@ -43,8 +46,9 @@ public class Videojuegos {
 		String nombre = estilosConsola.solicitarTexto(sc, "\nIntroduce el nombre del juego: ");
 		String consola = estilosConsola.solicitarConsola(sc, "Introduce la consola: ");
 		String estado = estilosConsola.solicitarEstado(sc, "Introduce el estado del juego: ");
+		String precio = estilosConsola.solicitarTexto(sc, "Introduce el precio del juego: ");
 		String serial = asignarSerial();
-		String[] nuevoJuego = { serial, nombre, consola, estado };
+		String[] nuevoJuego = { serial, nombre, consola, estado.toLowerCase(), precio};
 		juegos.add(nuevoJuego);
 		guardarJuegosEnArchivo();
 		System.out.println(estilosConsola.ANSI_GREEN + "\nJuego añadido correctamente.\n" + estilosConsola.ANSI_WHITE);
@@ -110,7 +114,7 @@ public class Videojuegos {
 		for (String[] juego : juegos) {
 			if (juego[0].equals(serial)) {
 				String nuevoEstado = estilosConsola.solicitarTexto(sc, "\nIngrese el nuevo estado del juego: ");
-				juego[3] = nuevoEstado;
+				juego[3] = nuevoEstado.toLowerCase();
 				guardarJuegosEnArchivo();
 				System.out.println(estilosConsola.ANSI_GREEN + "\nEl estado del juego se ha modificado correctamente."
 						+ estilosConsola.ANSI_WHITE);
@@ -124,11 +128,9 @@ public class Videojuegos {
 
 	public static void listaJuegos() {
 		System.out.println("\nListado de juegos registrados: \n");
-		System.out.println(estilosConsola.ANSI_PURPLE + "Serial        Juego           Ptf       Estado "
-				+ estilosConsola.ANSI_WHITE);
 
 		// Calcular la longitud máxima de cada campo
-		int[] maxLengths = new int[4];
+		int[] maxLengths = new int[5];
 		for (String[] juego : juegos) {
 			for (int i = 0; i < juego.length; i++) {
 				maxLengths[i] = Math.max(maxLengths[i], juego[i].length());
@@ -160,5 +162,26 @@ public class Videojuegos {
 		if (!encontrado)
 			System.out.println(estilosConsola.ANSI_RED + "\nJuego no encontrado." + estilosConsola.ANSI_WHITE);
 		return null;
+	}
+	
+	public static String obtenerPrecio(String serial) {
+		String precio = "";
+		for(int i = 1; i < juegos.size(); i++) {
+			String[] juego = juegos.get(i);
+			if (juego[0].equals(serial)) {
+				precio = juego[4];
+			}
+		}
+		return precio;
+	}
+	
+	public static String obtenerPrecioTotal() {
+		int precio = 0;
+		for(int i = 1; i < juegos.size(); i++) {
+			String[] juego = juegos.get(i);
+			int precioDelJuego = Integer.parseInt(juego[4]);
+		    precio += precioDelJuego;
+		}
+		return String.valueOf(precio);
 	}
 }

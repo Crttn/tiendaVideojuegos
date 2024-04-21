@@ -8,14 +8,14 @@ public class Usuarios {
 
 	private static ArrayList<String[]> usuarios = new ArrayList<>();
 
-	public void crearArchivoUsuarios() {
+	public static void crearArchivoUsuarios() {
 		File archivo;
 		archivo = new File("usuarios.txt");
 		try {
 			if (archivo.createNewFile()) {
-				System.out.println("Archivo creado con éxito");
+				System.out.println("Usuarios.txt creado con éxito");
 			} else {
-				System.out.println("Error al crear el archivo");
+				System.out.println("Error al crear Usuarios.txt");
 			}
 		} catch (IOException e) {
 			e.printStackTrace(System.out);

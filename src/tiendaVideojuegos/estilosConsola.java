@@ -17,7 +17,8 @@ public class estilosConsola {
 		System.out.println("\n1. Opciones de juegos");
 		System.out.println("2. Opciones de usuarios");
 		System.out.println("3. Opciones de compra");
-		System.out.println("4. " + ANSI_RED + "Salir del programa" + ANSI_WHITE);
+		System.out.println("4. Opciones de tienda");
+		System.out.println("5. " + ANSI_RED + "Salir del programa" + ANSI_WHITE);
 	}
 
 	public void menuJuegos() {
@@ -47,6 +48,11 @@ public class estilosConsola {
 		System.out.println("\n1." + ANSI_CYAN + "Modificar teléfono" + ANSI_WHITE);
 		System.out.println("2." + ANSI_CYAN + "Modificar correo" + ANSI_WHITE);
 		System.out.println("3." + ANSI_RED + "Volver" + ANSI_WHITE);
+	}
+	
+	public void menuBalanceTienda() {
+		System.out.println("\n1." + ANSI_CYAN + "Ver el balance de la tienda" + ANSI_WHITE);
+		System.out.println("2." + ANSI_RED + "Volver" + ANSI_WHITE);
 	}
 	
 	public static int solicitarOpcion(Scanner sc) {
@@ -188,6 +194,13 @@ public class estilosConsola {
 				"  ___  __   _  _  ____  ____   __   ____ \r\n" + " / __)/  \\ ( \\/ )(  _ \\(  _ \\ / _\\ / ___)\r\n"
 						+ "( (__(  O )/ \\/ \\ ) __/ )   //    \\\\___ \\\r\n"
 						+ " \\___)\\__/ \\_)(_/(__)  (__\\_)\\_/\\_/(____/");
+	}
+	
+	public void menuTiendaCartelera() {
+		System.out.println(" ____  __  ____  __ _  ____   __  \r\n"
+				+ "(_  _)(  )(  __)(  ( \\(    \\ / _\\ \r\n"
+				+ "  )(   )(  ) _) /    / ) D (/    \\\r\n"
+				+ " (__) (__)(____)\\_)__)(____/\\_/\\_/");
 	}
 
 	public void separador() {

@@ -1,10 +1,27 @@
 package tiendaVideojuegos;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
+		File juegos = new File("juegos.txt");
+		File usuarios = new File("usuarios.txt");
+		File compras = new File("compras.txt");
+		
+		if (!juegos.exists()) {
+			Videojuegos.crearArchivoJuegos();
+		}
+		
+		if (!usuarios.exists()) {
+			Usuarios.crearArchivoUsuarios();
+		}
+		
+		if (!compras.exists()) {
+			Compras.crearArchivoCompras();
+		}
+		
 		estilosConsola estilos = new estilosConsola();
 
 		Scanner sc = new Scanner(System.in);
@@ -101,8 +118,24 @@ public class Main {
 					System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
 				}
 				break;
-
 			case 4:
+				estilos.separador();
+				estilos.menuTiendaCartelera();
+				estilos.menuBalanceTienda();
+				eleccion = estilosConsola.solicitarOpcion(sc);
+
+				switch (eleccion) {
+				case 1:
+					Tienda.obtenerBalanceTienda();
+					break;
+				case 2:
+					System.out.println("\nVolviendo al menu principal");
+					break;
+				default:
+					System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
+				}
+				break;
+			case 5:
 				Videojuegos.guardarJuegos();
 				System.out.println("\nSaliendo del programa.");
 				break;
@@ -110,7 +143,7 @@ public class Main {
 				System.out.println("\nOpción no válida. Por favor, ingrese un número válido.");
 			}
 
-		} while (opcion != 4);
+		} while (opcion != 5);
 
 	}
 }

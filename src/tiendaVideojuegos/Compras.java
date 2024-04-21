@@ -10,7 +10,7 @@ public class Compras {
 
 	private static ArrayList<String[]> compras = new ArrayList<>();
 
-	public void crearArchivoCompras() {
+	public static void crearArchivoCompras() {
 		File archivo;
 		archivo = new File("compras.txt");
 		try {
@@ -35,7 +35,7 @@ public class Compras {
 			}
 			br.close();
 		} catch (IOException e) {
-			System.out.println("Error al cargar los usuarios.");
+			System.out.println("Error al cargar las compras.");
 		}
 	}
 
@@ -69,19 +69,21 @@ public class Compras {
 			System.out.println("\nNo se puede realizar la compra porque el juego no fue encontrado.");
 			return;
 		}
+		
+		String precio = Videojuegos.obtenerPrecio(juego);
 
 		Date myDate = new Date();
 		String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
 
 		String id = generarIdCompra();
-		String[] compra = { id + ", " + usuario + ", " + juego + ", " + fecha };
+		String[] compra = { id + ", " + usuario + ", " + juego + ", " + precio + ", " + fecha };
 		compras.add(compra);
 		guardarCompraEnArchivo();
 	}
 
 	public static void listaCompras() {
 		System.out.println("\nListado de compras registradas: \n");
-		System.out.println(estilosConsola.ANSI_PURPLE + "Id   Dni    	  Serial	Fecha" + estilosConsola.ANSI_WHITE);
+		System.out.println(estilosConsola.ANSI_PURPLE + "Id   Dni    	  Serial	Prc   Fecha" + estilosConsola.ANSI_WHITE);
 
 		// Calcular la longitud máxima de cada campo
 		int[] maxLengths = new int[5];
@@ -100,5 +102,15 @@ public class Compras {
 			}
 			System.out.println();
 		}
+	}
+	
+	public static String obtenerPrecioCompras() {
+		int precio = 0;
+		for(int i = 1; i < compras.size(); i++) {
+			String[] juego = compras.get(i);
+			int precioDelJuego = Integer.parseInt(juego[3]);
+		    precio += precioDelJuego;
+		}
+		return String.valueOf(precio);
 	}
 }
